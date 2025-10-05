@@ -44,6 +44,14 @@ def test_create_product(client, db_session):
     assert data["name"] == "New Test Product"
     assert data["category_id"] == category.id
 
+def test_delete_product(client, db_session):
+    """Проверяем удаление продукта по id"""
+    product = ProductFactory.create()
+    response = client.delete(f"/products/{product.id}")
+    assert response.status_code == 204
+    deleted_product = Product.query.get(product.id)
+    assert deleted_product is None
+
 def test_get_category(client, db_session):
     """Проверяем получение категорий"""
     response = client.get("/category")

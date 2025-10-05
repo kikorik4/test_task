@@ -53,6 +53,14 @@ def create_app():
         db.session.commit()
         return jsonify(new_product.to_json()), 201
 
+    @app.route('/products/<int:id>', methods=['DELETE'])
+    def delete_product(id):
+        """Удаление продукта по id"""
+        product = Product.query.get_or_404(id)
+        db.session.delete(product)
+        db.session.commit()
+        return jsonify({'message': 'Product deleted'}), 204
+
 
     @app.route('/category', methods=["GET"])
     def get_categories():
