@@ -1,4 +1,4 @@
-# Flask Application - Catalog Management API
+# Flask Application - Internet shop
 
 Этот проект представляет собой API для управления каталогом товаров, включающим товары и категории. Он предназначен для демонстрации базовых концепций Flask и Docker.
 
